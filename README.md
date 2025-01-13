@@ -5,7 +5,7 @@ Rozbudowana wersja klasycznej gry w kółko i krzyżyk, zaprojektowana dla dwóc
 Oto szczegółowe wyjaśnienie:
 - Zasada dotycząca ruchu:
 Każdy ruch odbywa się na jednej z 9 mniejszych plansz, które razem tworzą większą planszę 3x3.
-Pole, na które gracz postawi swój symbol (X lub O) na małej planszy, wskazuje pole na dużej planszy , na której przeciwnik musi zagrać w swoim następnym ruchu.
+Pole, na które gracz postawi swój symbol (X lub O) na małej planszy, wskazuje pole na dużej planszy, na której przeciwnik musi zagrać w swoim następnym ruchu.
 * Dodatkowo ! 
 Jeśli gracz wykonuje ruch, który wskazuje na małą planszę już całkowicie wypełnioną (lub wygraną), przeciwnik ma wolny wybór i może zagrać w dowolnej z dostępnych (niewypełnionych) małych plansz.
 
@@ -45,6 +45,8 @@ Gra polega na połączeniu zasad klasycznego kółka i krzyżyka z nowymi reguł
 
 
 ## Credits
+Muzyka:
+- "3KIPA" by EKIPA ([https://www.youtube.com/watch?v=3jHcWlO6PIw](https://youtu.be/RjRnxs0edZs?si=sKMD_wvnXt_STe0c))
 
 
 ## Licencja
