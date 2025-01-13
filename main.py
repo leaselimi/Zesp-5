@@ -244,3 +244,55 @@ mapowanie_sub = {
     's9p4': (9,4), 's9p5': (9,5), 's9p6': (9,6),
     's9p7': (9,7), 's9p8': (9,8), 's9p9': (9,9),
 }
+Duże X/O (pokrywające całą sub-planszę 300×300)
+big_krzyzyk = pygame.transform.scale(krzyzyk, (300, 300))
+big_kolko = pygame.transform.scale(kolko, (300, 300))
+
+Współrzędne pikselowe dla górnego-lewego rogu każdej z 9 sub-plansz.
+Sub-plansze rozmieszczone są w siatce 3x3 na głównej planszy.
+sub_positions = {
+    1: (0,0),   2: (300,0),   3: (600,0),
+    4: (0,300), 5: (300,300), 6: (600,300),
+    7: (0,600), 8: (300,600), 9: (600,600),
+}
+
+Kombinacje zwycięstwa na mini-planszy 3x3 (poziome, pionowe, ukośne).
+warunki_zwyciestwa_subplanszy = [
+    (1,2,3), (4,5,6), (7,8,9),
+    (1,4,7), (2,5,8), (3,6,9),
+    (1,5,9), (3,5,7)
+]
+
+Słownik przechowujący zwycięzcę dla każdej z 9 sub-plansz.
+Klucze (1-9) odpowiadają numerom sub-plansz, a wartości to:
+None (brak zwycięzcy),
+"X" (gracz X wygrał sub-planszę),
+"O" (gracz O wygrał sub-planszę)
+zwycięzcy_sub_plansz = {i: None for i in range(1,10)}
+
+Warunki zwycięstwa na dużej planszy (3×3 sub-plansz)
+warunki_zwyciestwa_duzej_planszy = [
+    (1,2,3), (4,5,6), (7,8,9),
+    (1,4,7), (2,5,8), (3,6,9),
+    (1,5,9), (3,5,7)
+]
+
+--- Strefy końcowe (Rematch / Quit) ---
+rematch1 = pygame.prostokat(90, 734, 268, 70)
+quit1 = pygame.prostokat(515, 734, 268, 70)
+rematch2 = pygame.prostokat(320, 680, 260, 65)
+quit2 = pygame.prostokat(320, 789, 260, 65)
+rematch_pc = pygame.prostokat(322, 694, 200, 56)
+quit_pc = pygame.prostokat(322, 786, 200, 70)
+rematch_remis = pygame.prostokat(360, 785, 187, 52)
+
+--- Inicjalizacja gry ---
+obecny_ekran = "menu"
+game_over = False
+winner = None
+win_sound_played = False
+tura: numer tury (0 dla X, 1 dla O, itd.)
+tura = 0
+aktualny_tekst = "TURA GRACZA 1"
+
+działanie_gry = True
