@@ -1,7 +1,4 @@
-# Nowy dźwięk po wygranej
-win_sound = pygame.mixer.Sound('winsound.mp3')
-win_sound.set_volume(20)
- 
+
 # OBRAZY
 try:
     menu = pygame.image.load("MENU.png").convert_alpha()
