@@ -178,3 +178,43 @@ def sprawdz_remis_w_subplanszy(sub_idx: int):
 
 działanie_gry = True
 aktualna_subplansza = None
+while działanie_gry:
+    for zdarzenie in pygame.event.get():
+        if zdarzenie.type == pygame.QUIT:
+            działanie_gry = False
+
+        elif zdarzenie.type == pygame.KEYDOWN:
+            if zdarzenie.key == pygame.K_ESCAPE:
+                działanie_gry = False
+
+        elif zdarzenie.type == pygame.MOUSEBUTTONDOWN:
+            pozycja_myszki = pygame.mouse.get_pos()
+
+            # ----------------
+            # EKRAN MENU
+            # ----------------
+            if obecny_ekran == "menu":
+                if graj_prostokat.collidepoint(pozycja_myszki):
+                    obecny_ekran = "plansza"
+                    plansza_ultimate = {k: None for k in plansza_ultimate}
+                    zwycięzcy_sub_plansz = {i: None for i in range(1,10)}
+                    tura = 0
+                    game_over = False
+                    winner = None
+                    win_sound_played = False
+                    aktualny_tekst = "TURA GRACZA 1"
+                    aktualna_subplansza = None
+
+                elif pc_play_prostokat.collidepoint(pozycja_myszki):
+                    obecny_ekran = "plansza2"
+                    plansza_ultimate = {k: None for k in plansza_ultimate}
+                    zwycięzcy_sub_plansz = {i: None for i in range(1,10)}
+                    tura = 0
+                    game_over = False
+                    winner = None
+                    win_sound_played = False
+                    aktualny_tekst = "TWOJA TURA"
+                    aktualna_subplansza = None
+
+                elif quit_prostokat.collidepoint(pozycja_myszki):
+                    działanie_gry = False
