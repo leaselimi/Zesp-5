@@ -27,11 +27,12 @@ Gra polega na połączeniu zasad klasycznego kółka i krzyżyka z nowymi reguł
 ## Instalacja
 
 ```markdown
-## Jak grać?
+Jak grać?
 
 1.
 2. 
-3. 
+3.
+4.
 ```
 
 
