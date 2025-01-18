@@ -218,3 +218,4 @@ while działanie_gry:
 
                 elif quit_prostokat.collidepoint(pozycja_myszki):
                     działanie_gry = False
+                    z
