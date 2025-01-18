@@ -27,10 +27,16 @@ Gra polega na połączeniu zasad klasycznego kółka i krzyżyka z nowymi reguł
 ## Instalacja
 
 ```markdown
-Jak grać?
+## Jak zagrać?
 
-1.
-2. 
+Aby zagrać w **Ultimate Kółko i Krzyżyk**, wykonaj poniższe kroki:
+
+1. **Sklonuj repozytorium** na swój komputer:
+   ```bash
+   git clone https://github.com/leaselimi/Zesp-5.git
+   cd Zesp-5
+2. pip install -r requirements.txt
+ 
 3.
 4.
 ```
