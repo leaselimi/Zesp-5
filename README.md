@@ -26,10 +26,6 @@ Gra polega na połączeniu zasad klasycznego kółka i krzyżyka z nowymi reguł
 
 ## Instalacja
 
-
-#### 1.6 **Instrukcja użytkowania**
-
-
 ```markdown
 ## Jak grać?
 
