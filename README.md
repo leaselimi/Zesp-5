@@ -41,13 +41,21 @@ Gra polega na połączeniu zasad klasycznego kółka i krzyżyka z nowymi reguł
 
 
 ## Zespół
+<a href="https://github.com/leaselimi/Zesp-5/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=leaselimi/Zesp-5" />
+</a>
 
+Made with [contrib.rocks](https://contrib.rocks).
 
 
 ## Credits
 Muzyka:
 - "3KIPA" by EKIPA ([https://www.youtube.com/watch?v=3jHcWlO6PIw](https://youtu.be/RjRnxs0edZs?si=sKMD_wvnXt_STe0c))
 
+Zasady gry:
+- Wikipedia (https://en.wikipedia.org/wiki/Ultimate_tic-tac-toe)
+  
+- Contributor graph jest stworzony przuy użyciu contrib.rocks.(https://contrib.rocks/preview?repo=angular%2Fangular-ja)
 
 ## Licencja
 Projekt jest objęty licencją [GNU GPLv3](LICENCJA).
