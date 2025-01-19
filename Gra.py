@@ -1,3 +1,4 @@
+import pygame
 # --- przyciskowe strefy w MENU ---
 graj_prostokat = pygame.Rect(253, 270, 390, 100)
 pc_play_prostokat = pygame.Rect(253, 436, 390, 100)
