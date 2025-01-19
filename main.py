@@ -1,8 +1,8 @@
 import pygame
 import sys
 import random
-from Gra.py import *
-from pics_sounds.py import *
+from Gra import *
+from pics_sounds import *
 
 pygame.init()
 pygame.mixer.init()
@@ -365,5 +365,67 @@ while działanie_gry:
                                         aktualna_subplansza = None
 
                                 break  # ruch gracza wykonany
+                # Ruch komputera (O)
+                if wykonany_ruch and not game_over:
+                    wolne_pola = [k for k, v in plansza_ultimate.items() if v is None]
+                    ruch_komputera = None
+
+                    # Komputer stara się grać w sub-planszy aktualnej_subplanszy
+                    if aktualna_subplansza is not None:
+                        wolne_pola_subplanszy = [
+                            k for k in wolne_pola if mapowanie_sub[k][0] == aktualna_subplansza
+                        ]
+                        if wolne_pola_subplanszy:
+                            ruch_komputera = random.choice(wolne_pola_subplanszy)
+
+                    # Jeśli sub-plansza docelowa jest już rozstrzygnięta lub niedostępna, komputer rusza się gdziekolwiek
+                    if ruch_komputera is None and wolne_pola:
+                        ruch_komputera = random.choice(wolne_pola)
+
+                    if ruch_komputera:
+                        sub_idx, cell_idx = mapowanie_sub[ruch_komputera]
+                        plansza_ultimate[ruch_komputera] = "O"
+                        tura += 1
+
+                        # Sprawdzamy zwycięstwo w sub-planszy
+                        sub_cells_symbol = []
+                        for k, v in plansza_ultimate.items():
+                            si, ci = mapowanie_sub[k]
+                            if si == sub_idx and v == "O":
+                                sub_cells_symbol.append(ci)
+
+                        znaleziony_zwyciezca_sub = False
+                        for triple in warunki_zwyciestwa_subplanszy:
+                            if all(c in sub_cells_symbol for c in triple):
+                                zwycięzcy_sub_plansz[sub_idx] = "O"
+                                znaleziony_zwyciezca_sub = True
+                                break
+
+                        # Jeśli brak zwycięzcy, sprawdzamy remis w sub-planszy
+                        if not znaleziony_zwyciezca_sub:
+                            if sprawdz_remis_w_subplanszy(sub_idx):
+                                zwycięzcy_sub_plansz[sub_idx] = "TIE"
+
+                        # Sprawdzamy dużą planszę
+                        if znaleziony_zwyciezca_sub:
+                            sub_list = [i for i, val in zwycięzcy_sub_plansz.items() if val == "O"]
+                            for triple in warunki_zwyciestwa_duzej_planszy:
+                                if all(s in sub_list for s in triple):
+                                    game_over = True
+                                    winner = "O"
+                                    break
+
+                        # Sprawdzenie remisu globalnego
+                        if not game_over:
+                            if all(zwycięzcy_sub_plansz[i] is not None for i in range(1,10)):
+                                game_over = True
+                                winner = "Remis"
+
+                        # Następna sub-plansza
+                        if not game_over:
+                            aktualna_subplansza = cell_idx
+                            if zwycięzcy_sub_plansz.get(aktualna_subplansza) is not None:
+                                aktualna_subplansza = None
+                                
 
     
