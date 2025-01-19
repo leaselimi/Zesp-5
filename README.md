@@ -44,7 +44,13 @@ Aby zagrać w **Ultimate Kółko i Krzyżyk**, wykonaj poniższe kroki:
   <img src="https://contrib.rocks/image?repo=leaselimi/Zesp-5" />
 </a>
 
-Made with [contrib.rocks](https://contrib.rocks).
+- Julia Budziszyn
+- Tomek Rybka
+- Lea Selimi
+- Basia Sidorowska
+- Nikodem Skiba
+- Zuzia Szukiewicz
+- Aleksandra Zakrzewska
 
 
 ## Credits
