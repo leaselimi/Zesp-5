@@ -302,3 +302,68 @@ while działanie_gry:
                                         winner = "Remis"
 
                                 break
+            # ---------------------------
+            # PLAYER vs COMPUTER
+            # ---------------------------
+            elif obecny_ekran == "plansza2" and not game_over:
+                wykonany_ruch = False
+                # Ruch gracza (X)
+                for klucz_pola, prostokat in strefy_small.items():
+                    if prostokat.collidepoint(pozycja_myszki):
+                        sub_idx, cell_idx = mapowanie_sub[klucz_pola]
+
+                        # Gracz może ruszyć się tylko w sub-planszy docelowej lub gdziekolwiek, jeśli None
+                        if aktualna_subplansza is None or aktualna_subplansza == sub_idx:
+                            # Pomijamy ruch, jeśli sub-plansza wygrana
+                            if zwycięzcy_sub_plansz[sub_idx] is not None:
+                                continue
+
+                            # Wstaw "X" w puste pole
+                            if plansza_ultimate[klucz_pola] is None:
+                                plansza_ultimate[klucz_pola] = "X"
+                                tura += 1
+                                wykonany_ruch = True
+
+                                # Sprawdzamy zwycięstwo w sub-planszy
+                                sub_cells_symbol = []
+                                for k, v in plansza_ultimate.items():
+                                    si, ci = mapowanie_sub[k]
+                                    if si == sub_idx and v == "X":
+                                        sub_cells_symbol.append(ci)
+
+                                znaleziony_zwyciezca_sub = False
+                                for triple in warunki_zwyciestwa_subplanszy:
+                                    if all(c in sub_cells_symbol for c in triple):
+                                        zwycięzcy_sub_plansz[sub_idx] = "X"
+                                        znaleziony_zwyciezca_sub = True
+                                        break
+
+                                # Jeśli brak zwycięzcy, sprawdzamy remis
+                                if not znaleziony_zwyciezca_sub:
+                                    if sprawdz_remis_w_subplanszy(sub_idx):
+                                        zwycięzcy_sub_plansz[sub_idx] = "TIE"
+
+                                # Sprawdzenie wygranej na dużej planszy
+                                if znaleziony_zwyciezca_sub:
+                                    sub_list = [i for i, val in zwycięzcy_sub_plansz.items() if val == "X"]
+                                    for triple in warunki_zwyciestwa_duzej_planszy:
+                                        if all(s in sub_list for s in triple):
+                                            game_over = True
+                                            winner = "X"
+                                            break
+
+                                # Sprawdzenie remisu globalnego
+                                if not game_over:
+                                    if all(zwycięzcy_sub_plansz[i] is not None for i in range(1,10)):
+                                        game_over = True
+                                        winner = "Remis"
+
+                                # Ustaw następny ruch w sub-planszy cell_idx
+                                if not game_over:
+                                    aktualna_subplansza = cell_idx
+                                    if zwycięzcy_sub_plansz.get(aktualna_subplansza) is not None:
+                                        aktualna_subplansza = None
+
+                                break  # ruch gracza wykonany
+
+    
