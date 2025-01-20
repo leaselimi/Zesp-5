@@ -8,9 +8,9 @@ pygame.init()
 pygame.mixer.init()
 
 # Muzyka 
-pygame.mixer.music.load("muzyka3KIPA.mp3") 
-pygame.mixer.music.play(loops=-1)
-pygame.mixer.music.set_volume(0.01)
+muzyka = pygame.mixer.Sound("muzyka3KIPA.mp3") 
+muzyka.play(-1)
+muzyka.set_volume(0.01)
 
 # Rozdzielczość okna gry
 SCREEN_WIDTH = 900
