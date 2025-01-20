@@ -426,6 +426,84 @@ while działanie_gry:
                             aktualna_subplansza = cell_idx
                             if zwycięzcy_sub_plansz.get(aktualna_subplansza) is not None:
                                 aktualna_subplansza = None
-                                
+	    # ---------------------------
+            # PO ZAKOŃCZENIU GRY
+            # ---------------------------
+            elif game_over:
+                if winner == 'X':
+                    if rematch1.collidepoint(pozycja_myszki):
+                        plansza_ultimate = {k: None for k in plansza_ultimate}
+                        zwycięzcy_sub_plansz = {i: None for i in range(1,10)}
+                        tura = 0
+                        game_over = False
+                        winner = None
+                        win_sound_played = False
+                        aktualny_tekst = (
+                            "TURA GRACZA 1" if obecny_ekran == "plansza" else "TWOJA TURA"
+                        )
+                        aktualna_subplansza = None
+                    elif quit1.collidepoint(pozycja_myszki):
+                        obecny_ekran = "menu"
+                        plansza_ultimate = {k: None for k in plansza_ultimate}
+                        zwycięzcy_sub_plansz = {i: None for i in range(1,10)}
+                        tura = 0
+                        game_over = False
+                        winner = None
+                        win_sound_played = False
+                        aktualna_subplansza = None
 
-    
+                elif winner == 'O':
+                    if obecny_ekran == "plansza":
+                        if rematch2.collidepoint(pozycja_myszki):
+                            plansza_ultimate = {k: None for k in plansza_ultimate}
+                            zwycięzcy_sub_plansz = {i: None for i in range(1,10)}
+                            tura = 0
+                            game_over = False
+                            winner = None
+                            win_sound_played = False
+                            aktualny_tekst = "TURA GRACZA 1"
+                            aktualna_subplansza = None
+                        elif quit2.collidepoint(pozycja_myszki):
+                            obecny_ekran = "menu"
+                            plansza_ultimate = {k: None for k in plansza_ultimate}
+                            zwycięzcy_sub_plansz = {i: None for i in range(1,10)}
+                            tura = 0
+                            game_over = False
+                            winner = None
+                            win_sound_played = False
+                            aktualna_subplansza = None
+                    else:
+                        # vs Komputer
+                        if rematch_pc.collidepoint(pozycja_myszki):
+                            plansza_ultimate = {k: None for k in plansza_ultimate}
+                            zwycięzcy_sub_plansz = {i: None for i in range(1,10)}
+                            tura = 0
+                            game_over = False
+                            winner = None
+                            win_sound_played = False
+                            aktualny_tekst = "TWOJA TURA"
+                            aktualna_subplansza = None
+                        elif quit_pc.collidepoint(pozycja_myszki):
+                            obecny_ekran = "menu"
+                            plansza_ultimate = {k: None for k in plansza_ultimate}
+                            zwycięzcy_sub_plansz = {i: None for i in range(1,10)}
+                            tura = 0
+                            game_over = False
+                            winner = None
+                            win_sound_played = False
+                            aktualna_subplansza = None
+
+                elif winner == 'Remis':
+                    if rematch_remis.collidepoint(pozycja_myszki):
+                        plansza_ultimate = {k: None for k in plansza_ultimate}
+                        zwycięzcy_sub_plansz = {i: None for i in range(1,10)}
+                        tura = 0
+                        game_over = False
+                        winner = None
+                        win_sound_played = False
+                        if obecny_ekran == "plansza":
+                            aktualny_tekst = "TURA GRACZA 1"
+                        else:
+                            aktualny_tekst = "TWOJA TURA"
+                        aktualna_subplansza = None
+
