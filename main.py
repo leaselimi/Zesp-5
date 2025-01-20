@@ -506,4 +506,69 @@ while działanie_gry:
                         else:
                             aktualny_tekst = "TWOJA TURA"
                         aktualna_subplansza = None
+                # -------------------
+    # RYSOWANIE EKRANU
+    # -------------------
+    if obecny_ekran == "menu":
+        screen.blit(menu, (0, 0))
+
+    else:
+        if game_over:
+            if not win_sound_played:
+                # Tutaj można ew. odtworzyć dźwięk wygranej, np. win_sound.play()
+                win_sound_played = True
+
+            # Wyświetlamy odpowiedni ekran zwycięstwa / remisu
+            if winner == 'X':
+                screen.blit(pierwszy, (0,0))
+            elif winner == 'O':
+                if obecny_ekran == "plansza":
+                    screen.blit(drugi, (0,0))
+                else:
+                    screen.blit(komputer, (0,0))
+            elif winner == 'Remis':
+                screen.blit(remis_img, (0,0))
+
+        else:
+            # Rysowanie planszy w trakcie rozgrywki
+            screen.blit(plansza, (0, 0))
+
+            # 1) Rysujemy duże X/O/TIE w wygranych sub-planszach
+            for i in range(1,10):
+                wygrany = zwycięzcy_sub_plansz[i]
+                if wygrany == "X":
+                    screen.blit(big_krzyzyk, sub_positions[i])
+                elif wygrany == "O":
+                    screen.blit(big_kolko, sub_positions[i])
+                elif wygrany == "TIE" or wygrany == "Remis":
+                    # Zakrywamy sub-planszę czarnym kwadratem
+                    screen.blit(black_square, sub_positions[i])
+
+            # 2) Rysujemy małe symbole w sub-planszach, które nie mają wygranego
+            for klucz_pola, value in plansza_ultimate.items():
+                sub_idx, cell_idx = mapowanie_sub[klucz_pola]
+                if zwycięzcy_sub_plansz[sub_idx] is None:
+                    if value == "X":
+                        screen.blit(krzyzyk, positions_small[klucz_pola])
+                    elif value == "O":
+                        screen.blit(kolko, positions_small[klucz_pola])
+            
+            # Wyświetlamy aktualną turę (tekst)
+            if obecny_ekran == "plansza":
+                text_surface = czcionka1.render(aktualny_tekst, True, WHITE)
+            else:
+                # vs Komputer
+                if tura % 2 == 0:
+                    txt = "TWOJA TURA"
+                else:
+                    txt = "RUCH KOMPUTERA"
+                text_surface = czcionka1.render(txt, True, WHITE)
+
+            text_prostokat = text_surface.get_rect(center=(SCREEN_WIDTH//2, 885))
+            screen.blit(text_surface, text_prostokat)
+
+    pygame.display.flip()
+
+pygame.quit()
+sys.exit()   
 
