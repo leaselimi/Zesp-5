@@ -7,6 +7,11 @@ from pics_sounds import *
 pygame.init()
 pygame.mixer.init()
 
+# Muzyka 
+pygame.mixer.music.load("muzyka3KIPA.mp3") 
+pygame.mixer.music.play(loops=-1)
+pygame.mixer.music.set_volume(0.5)
+
 # Rozdzielczość okna gry
 SCREEN_WIDTH = 900
 SCREEN_HEIGHT = 900
