@@ -3,7 +3,6 @@ import sys
 import random
 from Gra import *
 from pics_sounds import *
-from assets import *
 
 pygame.init()
 pygame.mixer.init()
